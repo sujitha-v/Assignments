@@ -1,0 +1,12 @@
+package Assignment1;
+
+public class TwoSum {
+
+	public static void main(String[] args) {
+		
+		int arr[]= {2,3,5,7,9};
+		int target=5;
+		int indices[]=findTwoSumTarget(arr);
+		System.out.println(indices[0],indices[1]);
+	}
+}

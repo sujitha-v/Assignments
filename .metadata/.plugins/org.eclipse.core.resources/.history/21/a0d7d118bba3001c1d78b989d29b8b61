@@ -1,0 +1,25 @@
+package Assignment1;
+
+import java.util.LinkedList;
+
+public class DeleteNodeSingleLinkedList {
+
+	public static void main(String[] args) {
+		LinkedList list=new LinkedList();
+		list.push(7);
+		list.push(1);
+		list.push(3);
+		list.push(2);
+		list.push(8);
+		
+		System.out.println("Created Linked list is: ");
+		list.printList();
+		// delete node at position 4
+		list.deleteNode(4);
+		System.out.println("Linked list after deleting the node at position 4:");
+		list.printList();
+
+	}
+	
+	
+}

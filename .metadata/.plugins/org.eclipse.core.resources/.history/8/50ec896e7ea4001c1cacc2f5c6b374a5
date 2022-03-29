@@ -1,0 +1,91 @@
+package Assignment1;
+
+public class DeleteNthNodeFromEndOFList {
+	 Node head; // head of list
+	 
+	    /* Linked list Node*/
+	    class Node {
+	        int data;
+	        Node next;
+	        Node(int d)
+	        {
+	            data = d;
+	            next = null;
+	        }
+	    }
+	 
+	    /* Given a key, deletes the first
+	       occurrence of key in
+	     * linked list */
+	    void deleteNode(int key)
+	    {
+	    	 Node first = head;
+	    	 
+	         // Second pointer will point to the
+	         // Nth node from the beginning
+	         Node second = head;
+	         for (int i = 0; i < key; i++) {
+	  
+	             // If count of nodes in the given
+	             // linked list is <= N
+	             if (second.next == null) {
+	  
+	                 // If count = N i.e. delete the head node
+	                 if (i == key - 1)
+	                     head = head.next;
+	                 return;
+	             }
+	             second = second.next;
+	         }
+	  
+	         // Increment both the pointers by one until
+	         // second pointer reaches the end
+	         while (second.next != null) {
+	             first = first.next;
+	             second = second.next;
+	         }
+	  
+	         // First must be pointing to the
+	         // Nth node from the end by now
+	         // So, delete the node first is pointing to
+	         first.next = first.next.next;
+	     }
+	 
+	    /* Inserts a new Node at front of the list. */
+	    public void push(int new_data)
+	    {
+	        Node new_node = new Node(new_data);
+	        new_node.next = head;
+	        head = new_node;
+	    }
+	    public void printList()
+	    {
+	        Node tnode = head;
+	        while (tnode != null) {
+	            System.out.print(tnode.data + " ");
+	            tnode = tnode.next;
+	        }
+	    }
+	 
+	    /* Driver program to test above functions. Ideally this
+	    function should be in a separate user class. It is kept
+	    here to keep code compact */
+	    public static void main(String[] args)
+	    {
+	    	DeleteNthNodeFromEndOFList llist = new DeleteNthNodeFromEndOFList();
+	 
+	        llist.push(7);
+	        llist.push(1);
+	        llist.push(3);
+	        llist.push(2);
+	 
+	        System.out.println("\nCreated Linked list is:");
+	        llist.printList();
+	 
+	        llist.deleteNode(4); 
+	 
+	        System.out.println(
+	                "\nLinked List after Deletion is:");
+	            llist.printList();
+	    }
+}

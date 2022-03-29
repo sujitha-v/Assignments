@@ -1,0 +1,79 @@
+package Assignment1;
+
+import java.util.LinkedList;
+
+public class DeleteNodeSingleLinkedList {
+	
+	Node head; //head of list
+
+	class Node{
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data=d;
+			next=null;
+		}
+	}
+
+	//inserts a new node into list
+	public void push(int data)
+	{
+		Node new_node=new Node(data);
+		new_node.next=head;
+		head=new_node;
+	}
+
+	void deleteNode(int position)
+	{
+		if(head==null)
+		{
+			return;
+		}
+		
+		Node temp=head;
+		
+		if(position==0)
+		{
+			head=temp.next;
+			return;
+		}
+		
+		for(int i=0; temp!=null && i<position-1;i++)
+		{
+			temp=temp.next;
+			if(temp==null|| temp.next==null)
+				return;
+			Node next=temp.next.next;
+			temp.next=next;
+		}
+	}
+		
+		public void printList()
+		{
+			Node tnode=head;
+			while(tnode!=null)
+			{
+				System.out.println(tnode.data + " ");
+				tnode=tnode.next;
+			}
+		}
+	
+	public static void main(String[] args) {
+		DeleteNodeSingleLinkedList llist=new DeleteNodeSingleLinkedList();
+		llist.push(10);
+		llist.push(20);
+		llist.push(30);
+		llist.push(40);
+		llist.push(50);
+		
+		System.out.println("Created Linked list is: ");
+		llist.printList();
+		// delete node at position 4
+		llist.deleteNode(0);
+		System.out.println("Linked list after deleting the node at position 4:");
+		llist.printList();
+
+	}
+
+}
